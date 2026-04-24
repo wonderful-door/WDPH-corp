@@ -1,10 +1,8 @@
 # WDPH-corp
-<code>
-  
-# install dependencies
-$ yarn install"
 
-# run server
-$ yarn run dev"
+install dependencies
+$ yarn install
 
-</code>
+run server
+$ yarn run dev
+
