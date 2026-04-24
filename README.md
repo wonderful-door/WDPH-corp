@@ -1,7 +1,10 @@
 # WDPH-corp
-
+<code>
+  
 # install dependencies
-$ yarn install
+$ yarn install"
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
+# run server
+$ yarn run dev"
+
+</code>
