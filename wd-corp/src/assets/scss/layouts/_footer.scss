@@ -1,0 +1,158 @@
+/*********************************
+ Footer
+**********************************/
+@use "../modules" as m;
+
+.footer {
+  padding: 50px 0;
+  background: m.$blue;
+  color: m.$white;
+
+  &__copyright {
+    text-align: center;
+  }
+
+
+  &__txt{
+    font-size: 1.4rem;
+  }
+  &__info{
+    @include m.flex($gap: 10px, $ai: flex-start, $jc:space-between);
+    border-bottom: 1px solid m.$blue02;
+    padding-bottom: 60px;
+    @include m.mqMax{
+      gap:30px;
+      flex-direction: column;
+    }
+  }
+  &__logo{
+    &-wrap{
+      width: 100%;
+      max-width: 300px;
+      // max-width: 140px;
+      // align-self: flex-start;
+      @include m.flex($fd: column, $gap: 10px, $ai: flex-start, $jc: center);
+      @include m.mqMax{
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: center;
+      }
+
+    }
+    &-img{
+      max-height: 65px;
+      pointer-events: none;
+      @include m.mqMax{
+        max-height: 50px;
+      }
+    }
+    &-ttl{
+      font-family: m.$font-inria-serif;
+      @include m.mqMax{
+        font-size: 1.4rem;
+      }
+    }
+  }
+  &__wrap{
+    @include m.flex($gap: 60px, $ai: center);
+    margin-top: 35px;
+    @include m.mqMax(576px){
+      align-items: flex-start;
+      flex-direction: column;
+      gap:10px;
+    }
+  }
+  &__language{
+    @include m.flex($gap: 10px, $ai: center, $jc:flex-start);
+    &-img{
+      width: 20px;
+      pointer-events: none;
+    }
+    select{
+      background: transparent;
+      border: none;
+      color: m.$white;
+      padding-right: 5px;
+    }
+  }
+
+  &__form{
+    margin-top: 30px;
+    @include m.flex($ai:flex-end, $jc:flex-start);
+    // text-align: center;
+  }
+  &__input{
+    font-size:1rem;
+    background-color: #D9D9D9;
+    padding-inline:10px;
+    border: 1px solid #D9D9D9;
+    width: 100%;
+    height: 25px;
+    // margin: 0 auto;
+
+    &:focus-visible{
+      outline: unset;
+      border-color: m.$red;
+    }
+  }
+  &__btn{
+    background-color: m.$red;
+    color: m.$white;
+    font-size: 1rem;
+    border: none;
+    height: 25px;
+    cursor: pointer;
+  }
+}
+
+.footer-menu01{
+  // flex: 1;
+  @include m.flex($gap:20px, $ai: flex-start, $jc:flex-end);
+  @include m.mqMax(){
+    gap:50px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  @include m.mqMax(767px){
+    gap:30px;
+  }
+  &__ttl{
+    @include m.mqMax(576px){
+      font-size: 1.6rem;
+    }
+  }
+  &__item{
+    // max-width: 200px;
+    @include m.mqMax{
+      width: calc(50% - (50px * (1 / 2)));;
+     
+    }
+    // @include m.mqMax(767px){
+    //   width: calc(100% - (20px * (1 / 2)));;
+    // }
+    // &:first-child{
+    //   width: 60%;
+    // }
+    // &:nth-child(n + 2){
+    //   width: 100%;
+    // }
+  }
+}
+.footer-menu02{
+  
+  &__item{
+    margin-top: 10px;
+  }
+  &__link{
+    @include m.transition(color);
+    &:hover{
+      color: m.$yellow;
+    }
+  }
+  &__ttl{
+    font-size: 1.4rem;
+  }
+  &__ttl02,&__txt{
+    font-size: 1.4rem;
+  }
+}

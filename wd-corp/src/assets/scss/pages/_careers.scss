@@ -1,0 +1,22 @@
+/*********************************
+Careers
+**********************************/
+@use "../modules" as m;
+
+.careers{
+  &__info{
+    border-bottom: 1px solid m.$black;
+    padding-bottom: 60px;
+    &-02{
+      margin-top:40px;
+    }
+  }
+  &__wrap{
+    p{
+      color: m.$gray;
+      font-size:1.6rem;
+      margin-top: 20px;
+      line-height: 2;
+    }
+  }
+}

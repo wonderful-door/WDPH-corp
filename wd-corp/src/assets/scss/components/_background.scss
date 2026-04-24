@@ -1,0 +1,8 @@
+/*********************************
+ Background
+**********************************/
+@use "../modules" as m;
+
+.bg-white01{
+    background-color: rgba(m.$white02, .55);
+}

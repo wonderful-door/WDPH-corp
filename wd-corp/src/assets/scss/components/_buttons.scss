@@ -1,0 +1,38 @@
+/*********************************
+ Buttons
+**********************************/
+@use "../modules" as m;
+
+
+.btn{
+  margin-top: 35px;
+  &__link{
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    background-color: m.$green;
+    text-align: center;
+    font-weight: 700;
+    color: m.$white;
+    border-radius: 50px;
+    padding-block:14px;
+    border: 1px solid transparent;
+    @include m.transition(color,background-color,border-color);
+
+    &--center{
+      margin: 0 auto;
+    }
+
+    &:hover{
+      color:m.$green;
+      background-color: transparent;
+      border-color: m.$green;
+    }
+
+    @include m.mqMax(576px){
+      font-size: 1.4rem;
+      max-width: 120px;
+      padding-block:10px;
+    }
+  }
+}

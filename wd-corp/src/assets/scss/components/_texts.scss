@@ -1,0 +1,23 @@
+/*********************************
+ Texts
+**********************************/
+@use "../modules" as m;
+
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.txt-01{
+  color: m.$gray;
+  margin-top: 30px;
+  text-align: center;
+  &--02{
+    font-size: 1.4rem;
+    text-align: justify;
+    line-height: 2;
+  }
+}

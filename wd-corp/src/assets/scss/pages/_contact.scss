@@ -1,0 +1,107 @@
+/*********************************
+Contact
+**********************************/
+@use "../modules" as m;
+
+.contact{
+  padding: 60px 0 100px;
+  &__info{
+    @include m.flex($ai:flex-start,$jc:space-between,$gap:40px);
+    @include m.mqMax{
+      flex-wrap:wrap;
+      justify-content: center;
+    }
+  }
+  &__wrap{
+    width: 100%;
+    max-width: 545px;
+  }
+  &__txt{
+    color: m.$gray03;
+    line-height: 2;
+    margin-top:20px;
+  }
+  &__form{
+    margin-top: 30px;
+    &-input{
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom:1px solid rgba(#737B7D,.8);
+      padding: 10px;  
+      margin-top: 20px;
+      font-size: 1.6rem;
+    }
+    &-idea{
+      height: 40px;
+      width: 100%;
+      padding: 10px;  
+      border: none;
+      margin-top: 10px;
+      font-size: 1.4rem;
+    }
+    &-txt{
+      color:#8E8E8E;  
+      padding: 20px 16px;
+    }
+    &-btn{
+      margin-top: 60px;
+      background-color: m.$green;
+      padding-block:15px;
+      letter-spacing: .08em;
+      font-size: 1.6rem;
+      width: 100%;
+      max-width: 180px;
+      border: none;
+      border-radius: 50px;
+      color: m.$white;
+      cursor: pointer;
+      font-weight: 700;
+      @include m.transition(background-color);
+      text-transform: uppercase;
+      &:hover{
+        background-color: m.$red;
+      }
+      @include m.mqMax{
+        margin-top: 50px;
+      }
+    }
+    &-checkbox{
+      margin-top: 20px;
+    }
+  }
+  &__link{
+    text-decoration: underline;
+    color: m.$blue;
+  }
+  &__img{
+    aspect-ratio: 642/583;
+    width: 100%;
+    max-width: 642px;
+    z-index: 1;
+    overflow:unset ;
+    margin-top: 60px;
+    margin-right: calc((100% - 100vw) / 2);
+    &::before{
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 700px;
+      top:-60px;
+      left:120px;
+      background-color: m.$red;
+      z-index: -1;
+    }
+
+    @include m.mqMax{
+      margin: 80px 0;
+      max-width: 550px;
+      &::before{
+        top:-20px;
+        height: m.percentVal(545,500);
+      }
+    }
+   
+  
+  }
+}

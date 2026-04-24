@@ -1,0 +1,53 @@
+/*********************************
+ Titles
+**********************************/
+@use "../modules" as m;
+
+
+.banner__ttl-en {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+
+  p {
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0; 
+  }
+}
+
+
+
+.list-ttl{
+  text-align: center ;
+  font-size: 2rem;
+  font-weight: 700;
+  color: m.$red;
+  display: -webkit-box;
+ 
+}
+
+.ttl-01{
+  text-align: center;
+  &__ttl{
+    font-size: 3.6rem;
+    font-weight: 600;
+    font-family: m.$font-roboto-serif;
+    color: m.$red; 
+    
+    @include m.mqMax(576px){
+      font-size: 3rem;
+    } 
+  }
+  &__txt{
+    color: m.$gray;
+    margin-top: 30px;
+    line-height: 2;
+    &--02{
+      margin-top: 10px;
+    }
+    @include m.mqMax(576px){
+      font-size:1.4rem;
+    } 
+  }
+}
