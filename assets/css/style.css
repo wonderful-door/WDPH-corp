@@ -258,6 +258,10 @@ img, canvas, iframe {
     font-size: 3rem;
   }
 }
+.ttl-01__ttl--02 {
+  text-align: center;
+  margin-bottom: 40px;
+}
 .ttl-01__txt {
   color: #717171;
   margin-top: 30px;
@@ -2203,7 +2207,7 @@ img, canvas, iframe {
   width: 340px;
   height: 18px;
   z-index: -1;
-  background: url("../images/top/top-bnr_slash-02.png") no-repeat center/contain;
+  background: url("../../images/top/top-bnr_slash-02.png") no-repeat center/contain;
 }
 .top-bnr__slash--02::before {
   left: 30px;
@@ -2777,7 +2781,7 @@ Web Desgin
   left: 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  background: url("../images/common/check_icon.png") no-repeat center/contain;
+  background: url("../../images/common/check_icon.png") no-repeat center/contain;
 }
 .web-sec01__img {
   aspect-ratio: 616/540;
@@ -2823,6 +2827,11 @@ Web Desgin
 }
 .web-sec02 .swiper-wrapper {
   --swiper-wrapper-transition-timing-function: linear;
+}
+.web-sec02 .swiper-slide {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 .web-sec03 .ttl-01__ttl {
   margin-bottom: 75px;

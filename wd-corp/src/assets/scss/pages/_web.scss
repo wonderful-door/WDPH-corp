@@ -43,7 +43,7 @@ Web Desgin
             top:50%;
             left: 0;
             transform: translateY(-50%);
-            background: url("../images/common/check_icon.png") no-repeat center/contain;
+            background: url("../../images/common/check_icon.png") no-repeat center/contain;
           }
         }
       }
@@ -76,6 +76,11 @@ Web Desgin
     }
     .swiper-wrapper{
       --swiper-wrapper-transition-timing-function : linear;
+    }
+    .swiper{
+      &-slide{
+        display: flex !important;
+      }
     }
   }
   

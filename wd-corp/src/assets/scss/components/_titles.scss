@@ -38,6 +38,11 @@
     @include m.mqMax(576px){
       font-size: 3rem;
     } 
+
+    &--02{
+      text-align: center;
+      margin-bottom: 40px;
+    }
   }
   &__txt{
     color: m.$gray;
@@ -50,4 +55,6 @@
       font-size:1.4rem;
     } 
   }
+
+ 
 }

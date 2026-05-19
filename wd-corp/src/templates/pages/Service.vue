@@ -1,17 +1,19 @@
 <template>
     <div class="services">
-        <ul class="list-01">
-            <li v-for="service in services" :key="service.title" class="list-01__item">
-                <div class="list-01__wrap">
-                    <img :src="service.icon" :alt="service.title" class="list-01__img">
-                    <h3 class="list-ttl" v-html="service.navTitle"></h3>
-                </div>
+        <BlocksBanner slug="services" />
+
+        <ul v-if="services.length" class="list-01">
+            <li v-for="(service, index) in services" :key="service.id" class="list-01__item">
+                <a :href="`#${service.id}`" class="list-01__wrap" @click.prevent="scrollToId(service.id)">
+                    <img :src="navIcons[index] ?? service.image" :alt="service.title" class="list-01__img">
+                    <h3 class="list-ttl">{{ service.title }}</h3>
+                </a>
             </li>
-            <li class="list-01__item">
-                <NuxtLink class="list-01__wrap" to="/">
+            <li v-if="digitalMarketing" class="list-01__item">
+                <a :href="`#${digitalMarketing.id}`" class="list-01__wrap" @click.prevent="scrollToId(digitalMarketing.id)">
                     <img class="list-01__img" src="~/assets/images/top/top-do_img-04.png" alt="Digital Marketing">
-                    <h3 class="list-ttl">Digital<br>Marketing</h3>
-                </NuxtLink>
+                    <h3 class="list-ttl">{{ digitalMarketing.title }}</h3>
+                </a>
             </li>
         </ul>
 
@@ -19,7 +21,8 @@
             <ul class="list-03">
                 <li
                     v-for="(service, index) in services"
-                    :key="service.title"
+                    :id="service.id"
+                    :key="service.id"
                     class="list-03__item"
                 >
                     <div class="list-03__info">
@@ -36,20 +39,20 @@
                             data-aos-delay="200"
                         >
                             <h2 class="list-03__ttl">{{ service.title }}</h2>
-                            <p class="list-03__txt">{{ service.text }}</p>
-                            <div class="btn">
-                                <NuxtLink :to="service.buttonLink" class="btn__link">
-                                    {{ service.buttonText }}<i class="fa-solid fa-arrow-right"></i>
+                            <div class="list-03__txt" v-html="service.text"></div>
+                            <div v-if="service.buttonText || index === 0 || index === 1" class="btn">
+                                <NuxtLink :to="index === 0 ? '/web-design' : index === 1 ? '/web-hosting' : (service.buttonLink || '/contact')" class="btn__link">
+                                    {{ service.buttonText || 'Learn more' }}<i class="fa-solid fa-arrow-right"></i>
                                 </NuxtLink>
                             </div>
                         </div>
                     </div>
                 </li>
 
-                <li class="list-03__item">
+                <li v-if="digitalMarketing" :id="digitalMarketing.id" class="list-03__item">
                     <div class="list-03__info-02">
                         <h2 class="list-03__ttl text-center">{{ digitalMarketing.title }}</h2>
-                        <p class="list-03__txt2">{{ digitalMarketing.text }}</p>
+                        <div class="list-03__txt2" v-html="digitalMarketing.text"></div>
                         <ul class="list-digital">
                             <li
                                 v-for="item in digitalMarketing.items"
@@ -90,44 +93,18 @@
 </template>
 
 <script setup>
-const services = [
-    {
-        navTitle: 'Web Design &<br>Development',
-        title: 'Web Design & Development',
-        text: 'We create modern, responsive websites that effectively showcase your products and services while providing a seamless user experience that drives growth.',
-        icon: 'https://placehold.co/150x150?text=Web+Design',
-        image: 'https://placehold.co/600x400?text=Web+Design+%26+Dev',
-        buttonText: 'Learn More',
-        buttonLink: '/contact',
-    },
-    {
-        navTitle: 'Web Hosting &<br>Maintenance',
-        title: 'Web Hosting & Maintenance',
-        text: 'Reliable hosting and ongoing maintenance to keep your website fast, secure, and up to date — so you can focus on running your business.',
-        icon: 'https://placehold.co/150x150?text=Hosting',
-        image: 'https://placehold.co/600x400?text=Hosting+%26+Maintenance',
-        buttonText: 'Learn More',
-        buttonLink: '/contact',
-    },
-    {
-        navTitle: 'CRM<br>Solutions',
-        title: 'CRM Solutions',
-        text: 'Custom CRM solutions designed to help you manage customer relationships, streamline processes, and grow your business.',
-        icon: 'https://placehold.co/150x150?text=CRM',
-        image: 'https://placehold.co/600x400?text=CRM+Solutions',
-        buttonText: 'Learn More',
-        buttonLink: '/contact',
-    },
-]
+import iconWebDev from '~/assets/images/top/top-do_img-01.png'
+import iconHosting from '~/assets/images/top/top-do_img-02.png'
+import iconCrm from '~/assets/images/top/top-do_img-03.png'
 
-const digitalMarketing = {
-    title: 'Digital Marketing',
-    text: 'Boost your online presence with our end-to-end digital marketing services tailored to your business goals.',
-    items: [
-        { title: 'SEO', image: 'https://placehold.co/200x200?text=SEO' },
-        { title: 'Social Media', image: 'https://placehold.co/200x200?text=Social+Media' },
-        { title: 'Content Marketing', image: 'https://placehold.co/200x200?text=Content' },
-        { title: 'Paid Ads', image: 'https://placehold.co/200x200?text=Paid+Ads' },
-    ],
+const navIcons = [iconWebDev, iconHosting, iconCrm]
+
+const { data } = await useWpService('services')
+const services = computed(() => data.value?.services ?? [])
+const digitalMarketing = computed(() => data.value?.digitalMarketing ?? null)
+
+const scrollToId = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 </script>

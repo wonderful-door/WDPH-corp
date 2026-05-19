@@ -24,9 +24,9 @@ const { data, error } = await useWpBanner({
     postType: props.postType,
 })
 
-if (error.value) {
-    console.error('[BlocksBanner] WP fetch failed:', error.value)
-}
+watch(error, (e) => {
+    if (e) console.error('[BlocksBanner] error:', e)
+})
 
 const titleEn = computed(() => data.value?.titleEn ?? '')
 const image = computed(() => data.value?.image ?? '')
