@@ -11,9 +11,9 @@
                 <li class="menu__item"><NuxtLink class="menu__link" to="/About"><span class="menu__ttl">About Us</span></NuxtLink></li>
                 <li class="menu__item"><NuxtLink class="menu__link" to="/Service"><span class="menu__ttl">Services</span></NuxtLink></li>
                 <li class="menu__item"><NuxtLink class="menu__link" to="/portfolio"><span class="menu__ttl">Portfolio</span></NuxtLink></li>
-                <li class="menu__item"><NuxtLink class="menu__link"><span class="menu__ttl">Blogs</span></NuxtLink></li>
+                <li class="menu__item"><NuxtLink class="menu__link" to="/blog"><span class="menu__ttl">Blogs</span></NuxtLink></li>
                 <li class="menu__item"><NuxtLink class="menu__link" to="/Careers"><span class="menu__ttl">Careers</span></NuxtLink></li>
-                <li class="menu__item"><NuxtLink class="menu__link"><span class="menu__ttl">Contact Us</span></NuxtLink></li>
+                <li class="menu__item menu__item-171"><NuxtLink class="menu__link" to="/Contact"><span class="menu__ttl">Contact Us</span></NuxtLink></li>
             </ul>
         </nav>
 

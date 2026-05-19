@@ -14,7 +14,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       wpApiBase: process.env.NUXT_PUBLIC_WP_API_BASE || 'https://example.com/wp-json',
-      wpCf7FormId: process.env.NUXT_PUBLIC_WP_CF7_FORM_ID || '',
+    },
+  },
+  router: {
+    options: {
+      linkExactActiveClass: 'active',
     },
   },
   hooks: {
@@ -28,6 +32,21 @@ export default defineNuxtConfig({
         name: 'portfolio-single',
         path: '/portfolio/:slug',
         file: resolve(__dirname, 'src/templates/single/Portfolio.vue'),
+      })
+      pages.push({
+        name: 'blog-single',
+        path: '/blog/:slug',
+        file: resolve(__dirname, 'src/templates/single/Blog.vue'),
+      })
+      pages.push({
+        name: 'web-design',
+        path: '/web-design',
+        file: resolve(__dirname, 'src/templates/pages/Web-design.vue'),
+      })
+      pages.push({
+        name: 'blog-archive',
+        path: '/blog',
+        file: resolve(__dirname, 'src/templates/archive/Blog.vue'),
       })
     },
   },

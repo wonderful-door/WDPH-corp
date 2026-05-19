@@ -26,7 +26,7 @@
                 <div class="list-talk__wrap">
                     <p class="list-talk__ttl">Let's Talk!</p>
                     <p class="list-talk__txt">Fill out the form to request a quotation or schedule a discovery meeting with us. </p>
-                    <form class="list-talk__form-wrap" @submit.prevent="handleSubmit">
+                    <form class="list-talk__form-wrap" @submit.prevent>
                         <input class="list-talk__input" type="text" name="your-name" placeholder="Your Name" required />
                         <input class="list-talk__input" type="email" name="your-email" placeholder="Your Email" required />
                         <input class="list-talk__input"type="tel" name="your-tel" placeholder="Your Phone Number" />
@@ -75,7 +75,7 @@
         <section class="top-website">
             <div class="container">
                 <div class="top-website__info">
-                    <img class="top-website__img" src="https://placehold.co/600x400?text=350+Websites" alt="Created 350+ Websites" data-aos="fade-right">
+                    <img class="top-website__img" src="~/assets/images/top/top-website_img-02.png" alt="" data-aos="fade-right">
                     <div class="top-website__wrap" data-aos="fade-left" data-aos-delay="200">
                         <h2 class="ttl-01__ttl">Created 350+ Websites</h2>
                         <p class="txt-01 txt-01--02">With a proven track record of creating over 350 websites—and many more ongoing projects we help businesses establish a strong online presence. From small and medium enterprises to large companies, we provide end-to-end website solutions, designing and developing websites that effectively showcase products and services while ensuring a seamless user experience that drives growth and success. </p>
@@ -97,22 +97,22 @@
                 </div>
                 <ul class="list-02">
                     <li class="list-02__item">
-                        <img src="https://placehold.co/200x200?text=Connection" alt="Connection" class="list-02__img">
+                        <img src="~/assets/images/top/top-choose_img-01.png" alt="Connection" class="list-02__img">
                         <h3 class="list-ttl text-uppercase">Connection</h3>
                         <p class="txt-01">We'll work together from concept to launch, building a website that accurately reflects your vision and values.</p>
                     </li>
                     <li class="list-02__item">
-                        <img src="https://placehold.co/200x200?text=Customer+Focus" alt="Customer Focus" class="list-02__img">
+                        <img src="~/assets/images/top/top-choose_img-02.png" alt="Customer Focus" class="list-02__img">
                         <h3 class="list-ttl text-uppercase">Customer Focus</h3>
                         <p class="txt-01">We are dedicated to building long-term relationships with our clients, based on trust, and communication.</p>
                     </li>
                     <li class="list-02__item">
-                        <img src="https://placehold.co/200x200?text=Solutions" alt="Solutions" class="list-02__img">
+                        <img src="~/assets/images/top/top-choose_img-03.png" alt="Solutions" class="list-02__img">
                         <h3 class="list-ttl text-uppercase">Solutions</h3>
                         <p class="txt-01">Our services are designed to solve real problems. We will create smart solutions for your long term success.</p>
                     </li>
                     <li class="list-02__item">
-                        <img src="https://placehold.co/200x200?text=Reliability" alt="Reliability" class="list-02__img">
+                        <img src="~/assets/images/top/top-choose_img-04.png" alt="Reliability" class="list-02__img">
                         <h3 class="list-ttl text-uppercase">Reliability</h3>
                         <p class="txt-01">We are committed to delivering reliable website and digital solutions with a team of experts you can trust. </p>
                     </li>
@@ -126,41 +126,17 @@
                     <h2 class="ttl-01__ttl">Blogs</h2>
                     <p class="ttl-01__txt">Be updated in our blogs your ultimate destination for the latest insights in web design and development. Dive into our community stories, explore innovative design trends. Stay updated with our latest company blogs.</p>
                 </div>
-                <ul class="list-blog">
-                    <li class="list-blog__item">
+                <ul v-if="blogPosts && blogPosts.length" class="list-blog">
+                    <li v-for="post in blogPosts" :key="post.id" class="list-blog__item">
                         <div class="list-blog__img img" data-aos="fade-up" data-aos-delay="100">
-                            <img src="https://placehold.co/600x400?text=Blog+Post+1" alt="Blog Post 1" class="img__main">
+                            <img :src="post.image || 'https://placehold.co/600x400?text=No+Image'" :alt="stripTags(post.title)" class="img__main">
                         </div>
                         <div class="list-blog__wrap" data-aos="fade-up" data-aos-delay="300">
-                            <p class="list-ttl">Top Web Design Trends to Watch in 2025</p>
-                            <a href="/blog/post-1" class="list-blog__link">
+                            <p class="list-ttl" v-html="post.title"></p>
+                            <NuxtLink :to="`/blog/${post.slug}`" class="list-blog__link">
                                 Read More
                                 <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="list-blog__item">
-                        <div class="list-blog__img img" data-aos="fade-up" data-aos-delay="100">
-                            <img src="https://placehold.co/600x400?text=Blog+Post+2" alt="Blog Post 2" class="img__main">
-                        </div>
-                        <div class="list-blog__wrap" data-aos="fade-up" data-aos-delay="300">
-                            <p class="list-ttl">How a Professional Website Boosts Your Business</p>
-                            <a href="/blog/post-2" class="list-blog__link">
-                                Read More
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="list-blog__item">
-                        <div class="list-blog__img img" data-aos="fade-up" data-aos-delay="100">
-                            <img src="https://placehold.co/600x400?text=Blog+Post+3" alt="Blog Post 3" class="img__main">
-                        </div>
-                        <div class="list-blog__wrap" data-aos="fade-up" data-aos-delay="300">
-                            <p class="list-ttl">Why CRM Solutions Matter for Growing Companies</p>
-                            <a href="/blog/post-3" class="list-blog__link">
-                                Read More
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                            </NuxtLink>
                         </div>
                     </li>
                 </ul>
@@ -203,7 +179,7 @@
         </section>
 
         <section class="top-letter">
-            <img src="https://placehold.co/1920x600?text=Business+Background" alt="" class="top-letter__bg-img">
+            <img src="~/assets/images/top/top-letter_bg-img.jpg" alt="" class="top-letter__bg-img">
             <div class="top-letter__info">
                 <div class="top-letter__wrap">
                     <h2 class="top-letter__ttl">Need Help for your Business Website?</h2>
@@ -229,17 +205,17 @@ import 'swiper/css/navigation'
 export default {
     name: 'FrontPage',
     async setup() {
-        const config = useRuntimeConfig();
-        const { data: portfolioItems } = await useWpPortfolio({ perPage: 12 })
+        const portfolioRes = useWpPortfolio({ perPage: 12 })
+        const blogRes = useWpBlogPopular(3)
+        await portfolioRes
+        await blogRes
         return {
-            wpApiBase: config.public.wpApiBase,
-            wpCf7FormId: config.public.wpCf7FormId,
-            portfolioItems,
+            portfolioItems: portfolioRes.data,
+            blogPosts: blogRes.data,
         };
     },
     data() {
         return {
-            submitting: false,
             worksSwiper: null,
         };
     },
@@ -253,6 +229,9 @@ export default {
         }
     },
     methods: {
+        stripTags(html) {
+            return (html || '').replace(/<[^>]*>/g, '')
+        },
         initWorksSwiper() {
             const el = this.$refs.topWorksSwiper
             if (!el || this.worksSwiper) return
@@ -277,33 +256,6 @@ export default {
                 },
             })
         },
-        async handleSubmit(event) {
-            if (this.submitting) return;
-            const form = event.target;
-            const body = new FormData(form);
-
-            body.append('_wpcf7', this.wpCf7FormId);
-            body.append('_wpcf7_unit_tag', `wpcf7-f${this.wpCf7FormId}-o1`);
-            body.append('_wpcf7_version', '6.0.6');
-            body.append('_wpcf7_locale', 'en_US');
-            body.append('_wpcf7_container_post', '0');
-
-            this.submitting = true;
-            try {
-                const url = `${this.wpApiBase}/contact-form-7/v1/contact-forms/${this.wpCf7FormId}/feedback`;
-                const res = await $fetch(url, { method: 'POST', body });
-                if (res.status === 'mail_sent') {
-                    alert(res.message || 'Thank you! Your message has been sent.');
-                    form.reset();
-                } else {
-                    alert(res.message || 'There was a problem sending your message.');
-                }
-            } catch (err) {
-                alert('Network error — please try again.');
-            } finally {
-                this.submitting = false;
-            }
-        }
     }
 }
 </script>
